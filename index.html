@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anchor Scaffold MCP — AI code generator for Solana Anchor</title>
+  <meta name="description" content="Anchor Scaffold MCP turns an IDL or a plain-English description into production-ready TypeScript clients, Rust account structs, and test suites for Solana's Anchor framework. MCP server + CLI. Open source, MIT." />
+  <meta name="theme-color" content="#0b0612" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Anchor Scaffold MCP — AI code generator for Solana Anchor" />
+  <meta property="og:description" content="Generate production-ready Anchor TypeScript clients, Rust structs, and tests in seconds. MCP server + CLI. Open source." />
+  <meta property="og:url" content="https://github.com/mukulcodezz/anchor-scaffold-mcp" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%239945FF'/%3E%3Cstop offset='1' stop-color='%2314F195'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M50 8a14 14 0 0 1 14 14 14 14 0 0 1-7 12v10h12a8 8 0 0 1 0 16H57v8a14 14 0 1 1-14 0v-8H31a8 8 0 0 1 0-16h12V34a14 14 0 0 1-7-12A14 14 0 0 1 50 8z'/%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Background glow layers -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Anchor Scaffold MCP home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="26" height="26">
+            <defs>
+              <linearGradient id="brandg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#9945FF" />
+                <stop offset="1" stop-color="#14F195" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#brandg)" d="M50 8a14 14 0 0 1 14 14 14 14 0 0 1-7 12v10h12a8 8 0 0 1 0 16H57v8a14 14 0 1 1-14 0v-8H31a8 8 0 0 1 0-16h12V34a14 14 0 0 1-7-12A14 14 0 0 1 50 8z" />
+          </svg>
+        </span>
+        <span class="brand__text">Anchor&nbsp;Scaffold<span class="brand__tag">MCP</span></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#start">Get started</a>
+      </nav>
+
+      <div class="nav__cta">
+        <a class="btn btn--ghost btn--sm" href="https://github.com/mukulcodezz/anchor-scaffold-mcp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+      </div>
+
+      <button class="nav__burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy reveal">
+          <span class="pill">
+            <span class="pill__dot"></span>
+            Open source · MIT · MCP + CLI
+          </span>
+          <h1 class="hero__title">
+            Stop writing Anchor<br />
+            boilerplate. <span class="grad-text">Generate it.</span>
+          </h1>
+          <p class="hero__sub">
+            Anchor Scaffold MCP turns an <strong>IDL</strong> — or a plain-English
+            description — into production-ready TypeScript clients, Rust
+            <code>#[derive(Accounts)]</code> structs, and full test suites for
+            Solana's Anchor framework. Runs as a Claude Code MCP server and a CLI.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="https://github.com/mukulcodezz/anchor-scaffold-mcp" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              View on GitHub
+            </a>
+
+            <button class="btn btn--copy copy-btn" data-copy="npm install -g anchor-scaffold-mcp" aria-label="Copy install command">
+              <span class="copy-btn__prompt">$</span>
+              <span class="copy-btn__cmd">npm install -g anchor-scaffold-mcp</span>
+              <span class="copy-btn__icon" aria-hidden="true">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </span>
+            </button>
+          </div>
+
+          <div class="hero__stats">
+            <div class="stat"><span class="stat__num grad-text">~90%</span><span class="stat__label">cost cut via prompt caching</span></div>
+            <div class="stat"><span class="stat__num grad-text">4</span><span class="stat__label">code generators</span></div>
+            <div class="stat"><span class="stat__num grad-text">3</span><span class="stat__label">LLM backends</span></div>
+          </div>
+        </div>
+
+        <!-- Terminal mockup -->
+        <div class="hero__terminal reveal" style="--delay:.12s">
+          <div class="term" id="term">
+            <div class="term__bar">
+              <span class="term__dot term__dot--r"></span>
+              <span class="term__dot term__dot--y"></span>
+              <span class="term__dot term__dot--g"></span>
+              <span class="term__title">anchor-scaffold — zsh</span>
+            </div>
+            <div class="term__body" id="term-body" aria-hidden="true"></div>
+          </div>
+          <div class="hero__terminal-glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROBLEM / SOLUTION ===== -->
+    <section class="ps" id="problem">
+      <div class="container ps__grid">
+        <article class="ps__card ps__card--bad reveal">
+          <span class="ps__tag ps__tag--bad">The old way</span>
+          <h2 class="ps__title">Anchor boilerplate eats hours.</h2>
+          <ul class="ps__list">
+            <li><span aria-hidden="true">✗</span> Hand-writing typed instruction callers for every IX</li>
+            <li><span aria-hidden="true">✗</span> Deriving PDAs and computing account space by hand</li>
+            <li><span aria-hidden="true">✗</span> Re-typing <code>#[derive(Accounts)]</code> constraints</li>
+            <li><span aria-hidden="true">✗</span> Scaffolding Mocha/Chai tests from scratch</li>
+            <li><span aria-hidden="true">✗</span> Drift between your IDL and your client</li>
+          </ul>
+        </article>
+
+        <div class="ps__arrow reveal" aria-hidden="true">
+          <svg viewBox="0 0 48 24" width="56" height="28"><path d="M0 12h40M30 3l11 9-11 9" fill="none" stroke="url(#brandg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+
+        <article class="ps__card ps__card--good reveal" style="--delay:.1s">
+          <span class="ps__tag ps__tag--good">With Anchor Scaffold</span>
+          <h2 class="ps__title">Generate it in seconds.</h2>
+          <ul class="ps__list">
+            <li><span aria-hidden="true">✓</span> Typed clients, PDA helpers &amp; account fetchers</li>
+            <li><span aria-hidden="true">✓</span> Correct space math &amp; constraints, every time</li>
+            <li><span aria-hidden="true">✓</span> Full Rust account structs from your IDL</li>
+            <li><span aria-hidden="true">✓</span> Ready-to-run test suites</li>
+            <li><span aria-hidden="true">✓</span> Always in sync with the source of truth</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">What it generates</span>
+          <h2 class="section__title">Everything around your program, <span class="grad-text">written for you</span></h2>
+          <p class="section__lead">Four focused generators plus the infrastructure that makes them fast and cheap to run.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <div class="feature__icon">🧩</div>
+            <h3>TypeScript clients</h3>
+            <p>Typed instruction callers, PDA derivation helpers and account fetchers — generated straight from your IDL.</p>
+            <code class="feature__cmd">anchor-scaffold gen-ts-client</code>
+          </article>
+
+          <article class="feature reveal" style="--delay:.05s">
+            <div class="feature__icon">🦀</div>
+            <h3>Rust account structs</h3>
+            <p><code>#[derive(Accounts)]</code> structs with the right constraints and exact space calculations baked in.</p>
+            <code class="feature__cmd">anchor-scaffold gen-accounts</code>
+          </article>
+
+          <article class="feature reveal" style="--delay:.1s">
+            <div class="feature__icon">🧪</div>
+            <h3>Test suites</h3>
+            <p>Mocha/Chai tests that exercise every instruction and assert on resulting account state.</p>
+            <code class="feature__cmd">anchor-scaffold gen-tests</code>
+          </article>
+
+          <article class="feature reveal" style="--delay:.15s">
+            <div class="feature__icon">⚓</div>
+            <h3>Whole programs</h3>
+            <p>Describe what you want in plain English and get a complete, idiomatic Anchor program back.</p>
+            <code class="feature__cmd">anchor-scaffold gen-program</code>
+          </article>
+
+          <article class="feature reveal" style="--delay:.1s">
+            <div class="feature__icon">🔌</div>
+            <h3>MCP + CLI</h3>
+            <p>Use it natively inside Claude Code as an MCP server, or run it as a standalone CLI in any pipeline.</p>
+            <code class="feature__cmd">claude · terminal</code>
+          </article>
+
+          <article class="feature reveal" style="--delay:.15s">
+            <div class="feature__icon">🧠</div>
+            <h3>Multi-backend</h3>
+            <p>Point it at Claude, OpenAI, or any OpenAI-compatible endpoint. Your keys, your models, your control.</p>
+            <code class="feature__cmd">claude · openai · custom</code>
+          </article>
+
+          <article class="feature feature--wide reveal" style="--delay:.2s">
+            <div class="feature__icon">⚡</div>
+            <h3>Prompt caching = ~90% cheaper</h3>
+            <p>Shared system context and IDL schemas are cached across calls, so repeated generations cost a fraction of a naive setup — without sacrificing quality.</p>
+            <code class="feature__cmd">~90% token cost reduction on repeat runs</code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section section--alt" id="how">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 class="section__title">From zero to generated in <span class="grad-text">three steps</span></h2>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal">
+            <div class="step__num">1</div>
+            <h3>Install</h3>
+            <p>One global install gives you the CLI and the MCP server binary.</p>
+            <div class="code-block">
+              <button class="code-block__copy copy-btn" data-copy="npm install -g anchor-scaffold-mcp" aria-label="Copy install command">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </button>
+              <pre><code><span class="c-prompt">$</span> npm install -g anchor-scaffold-mcp</code></pre>
+            </div>
+          </article>
+
+          <article class="step reveal" style="--delay:.08s">
+            <div class="step__num">2</div>
+            <h3>Set an API key</h3>
+            <p>Bring your own provider — Anthropic, OpenAI, or a compatible endpoint.</p>
+            <div class="code-block">
+              <button class="code-block__copy copy-btn" data-copy="export ANTHROPIC_API_KEY=sk-ant-...&#10;# or&#10;export OPENAI_API_KEY=sk-..." aria-label="Copy environment setup">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </button>
+              <pre><code><span class="c-prompt">$</span> export ANTHROPIC_API_KEY=<span class="c-str">sk-ant-...</span>
+<span class="c-comment"># or</span>
+<span class="c-prompt">$</span> export OPENAI_API_KEY=<span class="c-str">sk-...</span></code></pre>
+            </div>
+          </article>
+
+          <article class="step reveal" style="--delay:.16s">
+            <div class="step__num">3</div>
+            <h3>Generate</h3>
+            <p>Feed it an IDL and pick a generator. Output lands in your project.</p>
+            <div class="code-block">
+              <button class="code-block__copy copy-btn" data-copy="anchor-scaffold gen-ts-client --idl ./target/idl/escrow.json --out ./app/src/client" aria-label="Copy generate command">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </button>
+              <pre><code><span class="c-prompt">$</span> anchor-scaffold gen-ts-client \
+    <span class="c-flag">--idl</span> ./target/idl/escrow.json \
+    <span class="c-flag">--out</span> ./app/src/client</code></pre>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CODE SHOWCASE ===== -->
+    <section class="section" id="showcase">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Before / after</span>
+          <h2 class="section__title">Hand-rolled boilerplate vs <span class="grad-text">one command</span></h2>
+          <p class="section__lead">Same typed escrow client. One you maintain forever — the other regenerates from the IDL.</p>
+        </div>
+
+        <div class="showcase reveal">
+          <div class="tabs" role="tablist" aria-label="Code comparison">
+            <button class="tab is-active" role="tab" aria-selected="true" data-tab="before">Before — by hand</button>
+            <button class="tab" role="tab" aria-selected="false" data-tab="after">After — generated</button>
+          </div>
+
+          <div class="tab-panel is-active" data-panel="before">
+            <div class="code-window">
+              <div class="code-window__bar"><span class="code-window__file">client.ts <span class="muted">· written &amp; maintained manually</span></span></div>
+              <pre class="code-window__body"><code><span class="c-comment">// You write all of this, then keep it in sync forever…</span>
+<span class="c-key">import</span> { Program, BN, web3 } <span class="c-key">from</span> <span class="c-str">"@coral-xyz/anchor"</span>;
+
+<span class="c-key">function</span> <span class="c-fn">findEscrowPda</span>(maker: web3.PublicKey, seed: BN) {
+  <span class="c-key">return</span> web3.PublicKey.<span class="c-fn">findProgramAddressSync</span>(
+    [
+      Buffer.<span class="c-fn">from</span>(<span class="c-str">"escrow"</span>),
+      maker.<span class="c-fn">toBuffer</span>(),
+      seed.<span class="c-fn">toArrayLike</span>(Buffer, <span class="c-str">"le"</span>, <span class="c-num">8</span>),
+    ],
+    PROGRAM_ID,
+  );
+}
+
+<span class="c-key">async function</span> <span class="c-fn">initialize</span>(
+  program: Program,
+  maker: web3.PublicKey,
+  seed: BN,
+  amount: BN,
+) {
+  <span class="c-key">const</span> [escrow, bump] = <span class="c-fn">findEscrowPda</span>(maker, seed);
+  <span class="c-comment">// remember the account order… and the constraints…</span>
+  <span class="c-key">return</span> program.methods
+    .<span class="c-fn">initialize</span>(seed, amount)
+    .<span class="c-fn">accounts</span>({ maker, escrow, <span class="c-comment">/* …8 more */</span> })
+    .<span class="c-fn">rpc</span>();
+}
+<span class="c-comment">// …repeat for every instruction. 😮‍💨</span></code></pre>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-panel="after">
+            <div class="code-window">
+              <div class="code-window__bar"><span class="code-window__file">terminal <span class="muted">· one command, fully typed output</span></span></div>
+              <pre class="code-window__body"><code><span class="c-prompt">$</span> anchor-scaffold gen-ts-client --idl target/idl/escrow.json
+
+<span class="c-ok">✓</span> Parsed IDL  <span class="muted">(4 instructions, 2 accounts)</span>
+<span class="c-ok">✓</span> Generated typed instruction callers
+<span class="c-ok">✓</span> Generated PDA helpers + account fetchers
+<span class="c-ok">✓</span> Wrote app/src/client/escrow.ts  <span class="muted">(prompt cache hit · 91% cheaper)</span>
+
+<span class="c-comment">// app/src/client/escrow.ts — now just import &amp; call:</span>
+<span class="c-key">import</span> { EscrowClient } <span class="c-key">from</span> <span class="c-str">"./client/escrow"</span>;
+
+<span class="c-key">const</span> client = <span class="c-key">new</span> <span class="c-fn">EscrowClient</span>(program);
+
+<span class="c-key">await</span> client.<span class="c-fn">initialize</span>({ maker, seed, amount });   <span class="c-comment">// fully typed ✨</span>
+<span class="c-key">const</span> escrow = <span class="c-key">await</span> client.<span class="c-fn">fetchEscrow</span>(maker, seed);
+<span class="c-key">const</span> pda    = client.pdas.<span class="c-fn">escrow</span>(maker, seed);</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GET STARTED ===== -->
+    <section class="section section--alt" id="start">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Get started</span>
+          <h2 class="section__title">Two ways to run it</h2>
+          <p class="section__lead">Use the CLI in any project, or wire it into Claude Code as an MCP server.</p>
+        </div>
+
+        <div class="start__grid">
+          <article class="start__card reveal">
+            <div class="start__head"><span class="start__badge">CLI</span><h3>Install &amp; run</h3></div>
+            <p>Global install, then call any generator from your terminal or CI.</p>
+            <div class="code-block">
+              <button class="code-block__copy copy-btn" data-copy="npm install -g anchor-scaffold-mcp&#10;anchor-scaffold gen-ts-client --idl ./target/idl/myprog.json" aria-label="Copy CLI setup">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </button>
+              <pre><code><span class="c-prompt">$</span> npm install -g anchor-scaffold-mcp
+<span class="c-prompt">$</span> anchor-scaffold gen-ts-client \
+    <span class="c-flag">--idl</span> ./target/idl/myprog.json</code></pre>
+            </div>
+          </article>
+
+          <article class="start__card reveal" style="--delay:.1s">
+            <div class="start__head"><span class="start__badge start__badge--alt">MCP</span><h3>Add to Claude Code</h3></div>
+            <p>Drop this into your Claude Code MCP config and call the generators from chat.</p>
+            <div class="code-block">
+              <button class="code-block__copy copy-btn" data-copy='{
+  "mcpServers": {
+    "anchor-scaffold": {
+      "command": "npx",
+      "args": ["-y", "anchor-scaffold-mcp"],
+      "env": {
+        "ANTHROPIC_API_KEY": "sk-ant-..."
+      }
+    }
+  }
+}' aria-label="Copy Claude Code config">
+                <svg class="ico-copy" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M3.5 10.5h-1A1.5 1.5 0 0 1 1 9V2.5A1.5 1.5 0 0 1 2.5 1H9a1.5 1.5 0 0 1 1.5 1.5v1"/></svg>
+                <svg class="ico-check" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8.5l3.2 3.2L13 4.5"/></svg>
+              </button>
+              <pre><code><span class="c-punc">{</span>
+  <span class="c-prop">"mcpServers"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+    <span class="c-prop">"anchor-scaffold"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+      <span class="c-prop">"command"</span><span class="c-punc">:</span> <span class="c-str">"npx"</span><span class="c-punc">,</span>
+      <span class="c-prop">"args"</span><span class="c-punc">:</span> <span class="c-punc">[</span><span class="c-str">"-y"</span><span class="c-punc">,</span> <span class="c-str">"anchor-scaffold-mcp"</span><span class="c-punc">]</span><span class="c-punc">,</span>
+      <span class="c-prop">"env"</span><span class="c-punc">:</span> <span class="c-punc">{</span>
+        <span class="c-prop">"ANTHROPIC_API_KEY"</span><span class="c-punc">:</span> <span class="c-str">"sk-ant-..."</span>
+      <span class="c-punc">}</span>
+    <span class="c-punc">}</span>
+  <span class="c-punc">}</span>
+<span class="c-punc">}</span></code></pre>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-banner reveal">
+          <div class="cta-banner__text">
+            <h3>Ship Solana programs faster.</h3>
+            <p>Free, open source, and MIT-licensed. Star it on GitHub or grab it from npm.</p>
+          </div>
+          <div class="cta-banner__actions">
+            <a class="btn btn--primary" href="https://github.com/mukulcodezz/anchor-scaffold-mcp" target="_blank" rel="noopener">View on GitHub</a>
+            <a class="btn btn--ghost" href="https://www.npmjs.com/package/anchor-scaffold-mcp" target="_blank" rel="noopener">View on npm</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Anchor Scaffold MCP home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="24" height="24"><path fill="url(#brandg)" d="M50 8a14 14 0 0 1 14 14 14 14 0 0 1-7 12v10h12a8 8 0 0 1 0 16H57v8a14 14 0 1 1-14 0v-8H31a8 8 0 0 1 0-16h12V34a14 14 0 0 1-7-12A14 14 0 0 1 50 8z"/></svg>
+          </span>
+          <span class="brand__text">Anchor Scaffold<span class="brand__tag">MCP</span></span>
+        </a>
+        <p class="footer__tagline">AI code generator for Solana's Anchor framework.</p>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div class="footer__col">
+          <h4>Project</h4>
+          <a href="https://github.com/mukulcodezz/anchor-scaffold-mcp" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.npmjs.com/package/anchor-scaffold-mcp" target="_blank" rel="noopener">npm</a>
+          <a href="https://github.com/mukulcodezz/anchor-scaffold-mcp/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+        </div>
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#start">Get started</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> Anchor Scaffold MCP · MIT License</p>
+      <p>Built by <a href="https://github.com/mukulcodezz" target="_blank" rel="noopener">Mukul</a> · Not affiliated with Solana Labs or Anchor.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
